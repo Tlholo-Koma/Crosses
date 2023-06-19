@@ -1,7 +1,6 @@
 const nodemailer = require("nodemailer");
 const secrets = require("./secretControl");
-const jwt = require("./jwtControl");
-
+const jwt = require("../../resource/controllers/jwtControl");
 
 const sendLoginEmail = async (email, token) => {
   const transporter = nodemailer.createTransport({
@@ -9,7 +8,7 @@ const sendLoginEmail = async (email, token) => {
     port: 587,
     auth: {
       user: process.env.EMAILUSERNAME,
-      pass: process.env.EMAILPASSWORD
+      pass: process.env.EMAILPASSWORD,
     },
   });
 
@@ -29,8 +28,5 @@ const sendLoginEmail = async (email, token) => {
     }
   });
 };
-
-
-
 
 module.exports = { sendLoginEmail };
