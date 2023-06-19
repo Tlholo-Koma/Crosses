@@ -7,7 +7,7 @@ const local = require("../controllers/localControl")
 const getToken = async (user) => {
   
   if(privateKey === null){
-    privateKey = local.returnLocalMode() ? Buffer.from(process.env.PRIVATEKEY , 'base64').toString('ascii') : process.env.PRIVATEKEY
+    privateKey = Buffer.from(process.env.PRIVATEKEY , 'base64').toString('ascii')
   }
 
   const query = "SELECT COUNT(*) AS count FROM USERS WHERE user_email = @user_email";
@@ -41,7 +41,7 @@ const getToken = async (user) => {
 
 const verifyToken = async (token) => {
   if(publicKey === null){
-    publicKey = local.returnLocalMode() ? Buffer.from(process.env.PUBLICKEY , 'base64').toString('ascii') : process.env.PUBLICKEY
+    publicKey = Buffer.from(process.env.PUBLICKEY , 'base64').toString('ascii')
     // const buff = Buffer.from(publicKey).toString('base64');
     // console.log("public buff")
     // console.log(buff);
