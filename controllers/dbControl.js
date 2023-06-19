@@ -1,14 +1,26 @@
 const sql = require('mssql');
-const path = require('path');
-const fs = require('fs');
-const configPath = path.join(__dirname, '../../secrets/config.json');
-const configData = fs.readFileSync(configPath, 'utf8');
-const config = JSON.parse(configData).database;
-console.log("config for DB:",config);
-const pool = new sql.ConnectionPool(config);
+const secrets = require("./secretControl");
+let pool = null
+let config = null;
 
 async function executeQuery(sqlQuery,parameters) {
     try {
+      if(pool === null){
+        const secret_name = "prod/app/db";
+        const secret = await secrets.retreiveSecret(secret_name);
+        let config = {
+          user: secret.user,
+          password: secret.password,
+          server: secret.server,
+          database: secret.database,
+          options: {
+            encrypt: true,
+            trustServerCertificate: true
+          }
+        }
+        pool = new sql.ConnectionPool(config)
+  
+      }
         let result = undefined;
         console.log("Config" + config);
       // Check if the connection pool is already connected
