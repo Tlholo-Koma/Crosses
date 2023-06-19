@@ -1,10 +1,5 @@
 const passport = require("passport");
 const GitHubStrategy = require("passport-github2").Strategy;
-const path = require("path");
-const fs = require("fs");
-const configPath = path.join(__dirname, "../../secrets/config.json");
-const configData = fs.readFileSync(configPath, "utf8");
-const config = JSON.parse(configData).github;
 const jwt = require("../controllers/jwtControl");
 const secrets = require("../controllers/secretControl");
 const secret_name = "prod/app/github"
