@@ -19,6 +19,9 @@ const bootstrap = async () => {
   app.use(cors());
   app.use(express.static("styles"));
   app.use(express.static("scripts"));
+  app.get('/', (req, res) => {
+    res.redirect('/login');
+  });
   app.use("/login", loginRoutes);
 
   app.listen(port, () => {
