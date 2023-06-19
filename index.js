@@ -1,8 +1,8 @@
+require('dotenv').config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const cors = require("cors");
-const secret = require("./controllers/secretControl");
 const googleStrat = require("./strategies/google");
 const githubStrat = require("./strategies/github");
 const localControl = require("./controllers/localControl")

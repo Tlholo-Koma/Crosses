@@ -4,19 +4,17 @@ const jwt = require("./jwtControl");
 
 
 const sendLoginEmail = async (email, token) => {
-  const secret_name = "prod/app/email";
-  const secret = await secrets.retreiveSecret(secret_name);
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 587,
     auth: {
-      user: secret.emailUsername,
-      pass: secret.emailPassword,
+      user: process.env.EMAILUSERNAME,
+      pass: process.env.EMAILPASSWORD
     },
   });
 
   const mailOptions = {
-    from: secret.emailUsername,
+    from: process.env.EMAILUSERNAME,
     to: email,
     subject: "Hello from Crosses",
     text: jwt.generateJwtLink(token),

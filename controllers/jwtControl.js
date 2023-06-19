@@ -1,15 +1,13 @@
 const jwt = require("jsonwebtoken");
-const secrets = require("./secretControl");
 const db = require("../controllers/dbControl")
 let privateKey = null;
 let publicKey = null;
-const secret_name_public = "prod/app/publickey";
-const secret_name_pvt = "prod/app/privatekey";
+const local = require("../controllers/localControl")
 
 const getToken = async (user) => {
   
   if(privateKey === null){
-    privateKey = (await secrets.retreiveSecret(secret_name_pvt));
+    privateKey = local.returnLocalMode() ? Buffer.from(process.env.PRIVATEKEY , 'base64').toString('ascii') : process.env.PRIVATEKEY
   }
 
   const query = "SELECT COUNT(*) AS count FROM USERS WHERE user_email = @user_email";
@@ -43,7 +41,10 @@ const getToken = async (user) => {
 
 const verifyToken = async (token) => {
   if(publicKey === null){
-    publicKey = (await secrets.retreiveSecret(secret_name_public));
+    publicKey = local.returnLocalMode() ? Buffer.from(process.env.PUBLICKEY , 'base64').toString('ascii') : process.env.PUBLICKEY
+    // const buff = Buffer.from(publicKey).toString('base64');
+    // console.log("public buff")
+    // console.log(buff);
   }
 
   const verifyOptions = {
@@ -74,7 +75,7 @@ const verifyToken = async (token) => {
 
 const generateJwtLink = (token) => {
   const encodedToken = encodeURIComponent(token);
-  const link = `http://localhost:3000/login?token=${encodedToken}`;
+  const link = `${process.env.EMAILLINK}/login?token=${encodedToken}`;
   return link;
 };
 

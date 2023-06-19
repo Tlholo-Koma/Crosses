@@ -1,15 +1,12 @@
 const passport = require("passport")
 const googleOauth = require("passport-google-oauth20")
 const jwt = require("../controllers/jwtControl")
-const secrets = require("../controllers/secretControl");
-const secret_name = "prod/app/google"
 
 const configurePassport = async () => {
-    const secret = await secrets.retreiveSecret(secret_name);
     passport.use(new googleOauth.Strategy({
-        clientID: secret.clientID,
-        clientSecret: secret.clientSecret,
-        callbackURL: secret.callbackURL,
+        clientID: process.env.GOOGLECLIENTID,
+        clientSecret: process.env.GOOGLECLIENTSECRET,
+        callbackURL: process.env.GOOGLECALLBACKURL,
         scope: ["email"]
     },async (accessToken,refreshToken,profile,done) =>{
         console.log(profile.emails[0].value);

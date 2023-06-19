@@ -1,18 +1,15 @@
 const sql = require('mssql');
-const secrets = require("./secretControl");
 let pool = null
 let config = null;
 
 async function executeQuery(sqlQuery,parameters) {
     try {
       if(pool === null){
-        const secret_name = "prod/app/db";
-        const secret = await secrets.retreiveSecret(secret_name);
         let config = {
-          user: secret.user,
-          password: secret.password,
-          server: secret.server,
-          database: secret.database,
+          user: process.env.DBUSER,
+          password: process.env.DBPASSWORD,
+          server: process.env.DBSERVER,
+          database: process.env.DBDATABASE,
           options: {
             encrypt: true,
             trustServerCertificate: true
