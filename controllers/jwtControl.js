@@ -1,19 +1,24 @@
 const jwt = require("jsonwebtoken");
-const fs = require("fs");
-const path = require("path");
+const secrets = require("./secretControl");
 const db = require("../controllers/dbControl")
+let privateKey = null;
+let publicKey = null;
+const secret_name_public = "prod/app/publickey";
+const secret_name_pvt = "prod/app/privatekey";
 
 const getToken = async (user) => {
-  const privateKey = fs.readFileSync(
-    path.join(__dirname, "../../secrets/private.key"),
-    'utf8'
-  );
+  
+  if(privateKey === null){
+    privateKey = (await secrets.retreiveSecret(secret_name_pvt));
+  }
+
   const query = "SELECT COUNT(*) AS count FROM USERS WHERE user_email = @user_email";
   let result = null;
   try{
     result = await db.executeQuery(query, { user_email: user.toLowerCase() });
-  }catch{
+  }catch(e){
     console.log("Catching a query we unexpected behavior")
+    console
   }
   if(result[0]){
       console.log("DB result", result[0]);
@@ -36,11 +41,10 @@ const getToken = async (user) => {
   return token;
 };
 
-const verifyToken = (token) => {
-  const publicKey = fs.readFileSync(
-    path.join(__dirname, "../../secrets/public.key"),
-    'utf8'
-  );
+const verifyToken = async (token) => {
+  if(publicKey === null){
+    publicKey = (await secrets.retreiveSecret(secret_name_public));
+  }
 
   const verifyOptions = {
     issuer:  "Xand0",

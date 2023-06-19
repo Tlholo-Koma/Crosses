@@ -44,7 +44,7 @@ loginRouter.post("/verify",async function (req, res) {
     console.log("Hit verify")
     const token = req.body.token;
     console.log(token);
-    if(jwt.verifyToken(token) === true){
+    if( await jwt.verifyToken(token) === true){
         
     }
     res.json(true)
