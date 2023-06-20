@@ -2,6 +2,8 @@ const express = require("express");
 const passport = require("passport");
 const path = require("path");
 const loginRouter = express.Router();
+const auth = require("../controllers/authControl");
+const { default: axios } = require("axios");
 
 loginRouter.get("/", async function (req, res) {
   res.sendFile(path.join(__dirname, "../pages/login.html"));
@@ -14,15 +16,32 @@ loginRouter.get(
     res.send(200);
   }
 );
+
 loginRouter.get(
   "/google/redirect",
   passport.authenticate("google", {
-    failureRedirect: "/login",
+    failureRedirect: `/login`,
     session: false,
   }),
-  (req, res) => {
-    const token = req.user;
-    res.redirect(`/login?token=${token}`);
+  async (req, res) => {
+    const email = req.user;
+    try {
+      const requestData = {
+        email: email,
+        socialLogin: true,
+        // other data you want to include in the request body
+      };
+      const response = await axios.post(
+        `${process.env.AUTHSERVER}/login/token`,
+        requestData
+      );
+      const token = response.data;
+      res.redirect(`/login?token=${token}`);
+      // Process the response data here
+    } catch (error) {
+      console.error(error);
+      // Handle the error here
+    }
   }
 );
 
@@ -34,13 +53,54 @@ loginRouter.get(
 loginRouter.get(
   "/github/redirect",
   passport.authenticate("github", {
-    failureRedirect: "/login",
+    failureRedirect: `/login`,
     session: false,
   }),
-  (req, res) => {
-    const token = req.user;
-    res.redirect(`/login?token=${token}`);
+  async (req, res) => {
+    const email = req.user;
+    try {
+      const requestData = {
+        email: email,
+        socialLogin: true,
+        // other data you want to include in the request body
+      };
+      const response = await axios.post(
+        `${process.env.AUTHSERVER}/login/token`,
+        requestData
+      );
+      const token = response.data;
+      res.redirect(`/login?token=${token}`);
+      // Process the response data here
+    } catch (error) {
+      console.error(error);
+      // Handle the error here
+    }
   }
 );
+
+loginRouter.post("/token", async function (req, res) {
+  console.log("Hit token");
+  const username = req.body.email;
+  console.log(username);
+  try {
+    const requestData = {
+      email: username,
+      socialLogin: false,
+      // other data you want to include in the request body
+    };
+    const response = await axios.post(
+      `${process.env.AUTHSERVER}/login/token`,
+      requestData
+    );
+    const token = response.data;
+    if (token === null) {
+      res.send(200);
+    }
+  } catch (error) {
+    console.error(error);
+    // Handle the error here
+    res.send(500);
+  }
+});
 
 module.exports = loginRouter;

@@ -1,6 +1,5 @@
 const passport = require("passport")
 const googleOauth = require("passport-google-oauth20")
-const jwt = require("../controllers/jwtControl")
 
 const configurePassport = async () => {
     passport.use(new googleOauth.Strategy({
@@ -10,8 +9,8 @@ const configurePassport = async () => {
         scope: ["email"]
     },async (accessToken,refreshToken,profile,done) =>{
         console.log(profile.emails[0].value);
-        const token = await jwt.getToken(profile.emails[0].value)
-        done(null, token)
+        const email = profile.emails[0].value
+        done(null, email)
     
     }))
 }

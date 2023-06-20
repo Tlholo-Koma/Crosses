@@ -6,11 +6,11 @@ const githubLoginButton = document.getElementById("githubLoginButton");
 const usernameInput = document.getElementById("username");
 
 googleLoginButton.addEventListener("click", async () => {
-  window.location.href = "/Login/google";
+    window.location.href = '/Login/google';
 });
 
 githubLoginButton.addEventListener("click", async () => {
-  window.location.href = "/Login/github";
+    window.location.href='/Login/github'
 });
 
 loginButton.addEventListener("click", async () => {
@@ -33,7 +33,7 @@ loginButton.addEventListener("click", async () => {
 
 const checkToken = async (token) => {
   const data = { token: token };
-  const response = await fetch(`${authUrl}/login/verify`, {
+  const response = await fetch(`http://localhost:3000/login/verify`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -49,7 +49,7 @@ const checkToken = async (token) => {
 };
 
 const getToken = async (data) => {
-  const response = await fetch(`${authUrl}/login/token`, {
+  const response = await fetch(`http://localhost:3001/login/token`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

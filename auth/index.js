@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
+const passport = require("passport");
 const cors = require("cors");
 const localControl = require("./controllers/localControl");
 const port = process.env.PORT || 3000;
@@ -9,12 +10,10 @@ const app = express();
 const loginRoutes = require("./routes/loginRoute");
 
 const bootstrap = async () => {
+  app.use(passport.initialize());
   app.use(bodyParser.json());
   app.use(cors());
   app.use(express.static("scripts"));
-  app.get("/", (req, res) => {
-    res.redirect("/login");
-  });
   app.use("/login", loginRoutes);
 
   app.listen(port, () => {

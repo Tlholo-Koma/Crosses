@@ -1,8 +1,8 @@
 const jwt = require("jsonwebtoken");
-const db = require("../../auth/controllers/dbControl");
+const db = require("./dbControl");
 let privateKey = null;
 let publicKey = null;
-const local = require("../../auth/controllers/localControl");
+const local = require("./localControl");
 
 const getToken = async (user) => {
   if (privateKey === null) {

@@ -1,6 +1,5 @@
 const nodemailer = require("nodemailer");
-const secrets = require("./secretControl");
-const jwt = require("../../resource/controllers/jwtControl");
+const jwt = require("./jwtControl");
 
 const sendLoginEmail = async (email, token) => {
   const transporter = nodemailer.createTransport({

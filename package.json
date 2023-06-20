@@ -1,0 +1,11 @@
+{
+    "name": "your-package",
+    "version": "1.0.0",
+    "scripts": {
+      "install-auth": "cd auth && npm install",
+      "install-resource": "cd resource && npm install",
+      "run-auth": "cd auth && node index.js",
+      "run-resource": "cd resource && node index.js "
+    }
+  }
+  
