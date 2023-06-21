@@ -105,6 +105,8 @@ loginRouter.post("/token", async function (req, res) {
 
 loginRouter.post("/verify", async function (req, res) {
   console.log("Hit token");
+  const origin = req.headers.origin;
+  console.log(origin)
   const token = req.body.token;
   console.log(token);
   try {
@@ -120,7 +122,7 @@ loginRouter.post("/verify", async function (req, res) {
     if (result === true) {
       res.send(200);
     }else{
-      res.send(403)
+      res.redirect("/login")
     }
   } catch (error) {
     console.error(error);
