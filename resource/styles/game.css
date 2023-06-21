@@ -43,7 +43,10 @@ a{
 
 h1{
   font-size: 3rem;
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
+}
+h2{
+  padding-bottom: 1rem;
 }
 
 nav{
