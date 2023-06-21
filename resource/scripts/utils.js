@@ -12,3 +12,7 @@ export const authorizedFetch = async (url, method, token, body) => {
 
   return response.json();
 };
+
+export const authorizedRedirect = async (token,url) => {
+    window.location.href=`${url}?token=${localStorage.getItem("jwtToken")}`
+}
