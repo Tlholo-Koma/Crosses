@@ -22,12 +22,12 @@ function handleClick(button) {
 function resetBoard() {
   const buttons = document.querySelectorAll('button');
   for (const button of buttons) {
-    button.innerText = ''; // Clear the button text
-    button.dataset.state = ''; // Reset the data-state attribute
+    button.innerText = '';
+    button.dataset.state = ''; 
   }
   const currentPlayerDisplay = document.querySelector('.current-player');
   currentPlayerDisplay.innerText = 'O';
-  currentPlayer = 'O'; // Reset the current player to 'O'
+  currentPlayer = 'O';
 }
 
 
@@ -61,7 +61,7 @@ function checkWinner() {
     }
   }
 
-  return false; // No winner
+  return false; // No winner lol typical tic tac toe take
 }
 
 function checkTie() {
