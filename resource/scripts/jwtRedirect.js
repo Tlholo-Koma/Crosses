@@ -10,17 +10,8 @@ const redirect = async () =>{
             token = localStorage.getItem('jwtToken')
         }
         if (token !== null) {
-            localStorage.setItem('jwtToken', token);
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('jwtToken');
-            console.log(token)
-            const response = await axios.get(`${baseUrlRedirect}/game`)
-            if (response.ok) {
-                const message = await response.json();
-                console.log("message back")
-                console.log(message)
-            } else {
-                throw new Error("Error: " + response.status);
-            }
+            const url = "/Game"
+            window.location.href=`${url}?token=${token}`
     }
     }catch(e){
         console.log(e);

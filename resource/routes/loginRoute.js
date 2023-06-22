@@ -103,4 +103,32 @@ loginRouter.post("/token", async function (req, res) {
   }
 });
 
+loginRouter.post("/verify", async function (req, res) {
+  console.log("Hit token");
+  const origin = req.headers.origin;
+  console.log(origin)
+  const token = req.body.token;
+  console.log(token);
+  try {
+    const requestData = {
+      token: token
+      // other data you want to include in the request body
+    };
+    const response = await axios.post(
+      `${process.env.AUTHSERVER}/login/verify`,
+      requestData
+    );
+    const result = response.data;
+    if (result === true) {
+      res.send(200);
+    }else{
+      res.redirect("/login")
+    }
+  } catch (error) {
+    console.error(error);
+    // Handle the error here
+    res.send(500);
+  }
+});
+
 module.exports = loginRouter;
