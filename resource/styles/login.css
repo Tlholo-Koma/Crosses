@@ -1,12 +1,45 @@
-
-
-.background{
-    background: linear-gradient(#e8ccbf, #cfb9a5);
-}
-
-.container {
+@import url("../styles/main.css");
+body{
+    height: 100vh;
+    width: 100vw;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
+    justify-content: center;
+    font-family: var(--main-font);
+    text-shadow: 0 1px 3px #000;
+}
+h1{
+    font-size: 4rem;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+input{
+    font-family: inherit;
+    font-size: 2rem;
+    padding: 0 1rem 0 1rem;
+}
+
+article{
+    gap: 1rem;
+}
+
+button{
+    border: none;
+    background-color: #00000000;
+}
+
+button.own-login {
+    text-decoration: underline overline;
+    font-size: 2rem;
+    padding-bottom: 1rem;
+}
+
+img{
+    width: 4rem;
+    height: 4rem;
 }

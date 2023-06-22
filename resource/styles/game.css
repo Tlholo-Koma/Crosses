@@ -66,6 +66,7 @@ main button{
   height: 10rem;
   background-color: white;
   border: none;
+  font-family: inherit;
 }
 
 main button:hover{
