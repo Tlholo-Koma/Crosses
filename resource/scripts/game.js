@@ -7,16 +7,24 @@ function handleClick(button) {
   button.innerText = currentPlayer;
   const currentPlayerDisplay = document.querySelector('.current-player');
   currentPlayerDisplay.innerText = currentPlayer === 'O' ? 'X' : 'O';
-
+  const messageOverlay = document.getElementById('message-overlay');
+  const messageContent = document.getElementById('message-content');
   if (checkWinner()) {
-    console.log('Player ' + currentPlayer + ' wins!');
-    resetBoard();
+    messageContent.innerText = 'Player ' + currentPlayer + ' wins!';
+    messageOverlay.style.display = 'flex';
   } else if (checkTie()) {
-    console.log('It\'s a tie!');
+    messageContent.innerText = 'It\'s a tie!';
+    messageOverlay.style.display = 'flex';
     resetBoard();
   } else {
     currentPlayer = currentPlayer === 'O' ? 'X' : 'O';
   }
+}
+
+function playAgain() {
+  const messageOverlay = document.getElementById('message-overlay');
+  messageOverlay.style.display = 'none';
+  resetBoard(); // Reset the board
 }
 
 function resetBoard() {
