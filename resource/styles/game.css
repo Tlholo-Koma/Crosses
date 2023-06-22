@@ -1,0 +1,133 @@
+@import url("./main.css");
+
+html,
+body{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--main-font);
+  text-shadow: 0 1px 3px #000;
+  padding: 0;
+}
+
+header.page-header{
+  justify-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.game-main {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  align-self: center;
+  justify-self: center;
+  background-color: black;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+sup{
+  border-radius: 50%;
+  font-size: 1rem;
+}
+
+nav{
+  display: flex;
+  gap: 1rem;
+}
+
+a{
+  color: #000;
+  text-decoration: none;
+}
+
+h1{
+  font-size: calc(20px+1vw);
+  padding-bottom: 2rem;
+  align-self: center;
+}
+h2{
+  padding-bottom: 1rem;
+  align-self: center;
+}
+
+nav{
+  justify-self: flex-end;
+}
+
+main button{
+  width: 10rem;
+  height: 10rem;
+  background-color: white;
+  border: none;
+  font-family: inherit;
+}
+
+main button:hover{
+  cursor: pointer;
+  background-color: gray;
+  border:none;
+}
+
+main button:active{
+  background-color: #000;
+  color: white;
+}
+
+main button:focus{
+  background-color: rgb(25, 25, 25);
+  color: white;
+  border:none
+}
+main button:visited{
+  background-color: rgb(25, 25, 25);
+  color: white;
+  border:none
+}
+
+#message-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: none;
+  z-index: 2;
+}
+
+#message-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: rgb(0, 0, 0);
+  font-size: 3rem;
+  text-shadow: 0 1px 3px white;
+}
+
+.play-again-button {
+  margin: auto;
+  height: 2rem;
+  width: max-content;
+  color: #000;
+  background-color: rgba(255, 255, 255, 0);
+  border-style: none;
+  border-color: #000;
+  font-family: inherit;
+  text-shadow: 0 1px 3px white;
+  text-decoration: underline overline;
+  font-size: 2rem;
+}
+
+.play-again-button:hover {
+  color: white;
+}
