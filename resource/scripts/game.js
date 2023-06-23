@@ -1,4 +1,21 @@
 let currentPlayer = 'O';
+const historyButton = document.getElementById('history');
+
+historyButton.addEventListener("click", async () => {
+  try{
+    const urlParams = new URLSearchParams(window.location.search);
+    let token = urlParams.get('token') || null;
+    if(!token){
+        token = localStorage.getItem('jwtToken')
+    }
+    if (token !== null) {
+        const url = "/game/history"
+        window.location.href=`${url}?token=${token}`
+}
+}catch(e){
+    console.log(e);
+}
+});
 
 function handleClick(button) {
   if (button.innerText !== '') {
