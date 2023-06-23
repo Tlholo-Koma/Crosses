@@ -33,7 +33,7 @@ loginButton.addEventListener("click", async () => {
 
 const checkToken = async (token) => {
   const data = { token: token };
-  const response = await fetch(`http://localhost:3000/login/verify`, {
+  const response = await fetch(`${baseUrl}/login/verify`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -49,7 +49,7 @@ const checkToken = async (token) => {
 };
 
 const getToken = async (data) => {
-  const response = await fetch(`http://localhost:3001/login/token`, {
+  const response = await fetch(`${baseUrl}/login/token`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

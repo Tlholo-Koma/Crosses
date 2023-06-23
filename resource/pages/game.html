@@ -4,11 +4,11 @@
         <title>tic tac toe</title>
         <meta name="description" content="tic tac toe">
         <meta name="keywords" content="game tic tac toe">
-        <link rel="stylesheet" href="../styles/game.css">
-        <link rel="stylesheet" href="../styles/main.css">
+        <link rel="stylesheet" href="game.css">
+        <link rel="stylesheet" href="main.css">
     </head>
     <body>
-        <header>
+        <header class="page-header">
             <nav>
                 <a href="#">Win history</a>
                 <a href="#">Profile</a>
@@ -17,7 +17,11 @@
             <h1>Tic Tac Toe<sup>Tm</sup></h1>
             <h2 class="current-player">O</h2>
         </header>
-        <main>
+        <strong id="message-overlay"> 
+            <p id="message-content"></p>
+            <button class="play-again-button"  id="play-again-button" onclick="playAgain()">Play Again</button>
+        </strong>
+        <main class="game-main">
             <button id="top-left" data-state="" onclick="handleClick(this)"></button>
             <button id="top-middle" data-state="" onclick="handleClick(this)"></button>
             <button id="top-right" data-state="" onclick="handleClick(this)"></button>
@@ -28,6 +32,6 @@
             <button id="bottom-middle" data-state="" onclick="handleClick(this)"></button>
             <button id="bottom-right" data-state="" onclick="handleClick(this)"></button>
         </main>
-        <script src="../scripts/game.js"></script>
+        <script src="./game.js"></script>
     </body>
 </html>
