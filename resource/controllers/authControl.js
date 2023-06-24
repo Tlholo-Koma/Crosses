@@ -16,10 +16,13 @@ const validateAuth = async (req, res, next) => {
       `${process.env.AUTHSERVER}/login/verify`,
       requestData
     );
-    console.log("WHAT WE GOT BACK FROM VERIFY");
-    console.log(response.data);
 
     if (response.data === true) {
+      const username = await axios.post(
+        `${process.env.AUTHSERVER}/login/user`,
+        requestData
+      );
+      await checkRegistration(username.data)
       next();
     } else {
       return res.redirect("/login");
