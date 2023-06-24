@@ -3,13 +3,14 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const localControl = require("./controllers/localControl");
-const googleStrat = require('./strategies/google')
-const githubStrat = require('./strategies/github')
+const googleStrat = require("./strategies/google");
+const githubStrat = require("./strategies/github");
 const port = process.env.PORT || 3001;
 localControl.setLocalMode(!(port === process.env.PORT));
 const app = express();
 const loginRoutes = require("./routes/loginRoute");
 const gameRoutes = require("./routes/gameRoute");
+const dataRoutes = require("./routes/dataRoute");
 
 const bootstrap = async () => {
   await googleStrat.configurePassport();
@@ -23,7 +24,8 @@ const bootstrap = async () => {
     res.redirect("/login");
   });
   app.use("/login", loginRoutes);
-  app.use("/Game",gameRoutes )
+  app.use("/Game", gameRoutes);
+  app.use("/data", dataRoutes);
 
   app.listen(port, () => {
     console.log(`Resource Server listening on http://localhost:${port}`);
