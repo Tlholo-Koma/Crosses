@@ -61,9 +61,6 @@ const getToken = async (data) => {
   if (response.ok) {
     const token = await response.json();
     sessionStorage.setItem("jwtToken", token);
-    console.log("Hey - did we save it?")
-    console.log(sessionStorage.getItem('jwtToken'))
-    
   } else {
     throw new Error("Error: " + response.status);
   }
