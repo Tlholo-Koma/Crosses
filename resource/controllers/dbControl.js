@@ -25,8 +25,6 @@ async function executeQuery(sqlQuery, parameters) {
       request.input(key, value);
     }
     result = await request.query(sqlQuery);
-    console.log("After DB call?")
-    console.log(result)
     await pool.close();
     return result.recordset;
   } catch (error) {
