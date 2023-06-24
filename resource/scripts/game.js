@@ -1,6 +1,23 @@
 const baseURLGame = window.location.href.split("/").slice(0, 3).join("/");
 let currentPlayer = 'O';
 const historyButton = document.getElementById('history');
+const profile = document.getElementById('profile');
+
+profile.addEventListener("click", async () => {
+  try{
+    const urlParams = new URLSearchParams(window.location.search);
+    let token = urlParams.get('token') || null;
+    if(!token){
+        token = sessionStorage.getItem('jwtToken')
+    }
+    if (token !== null) {
+        const url = "/profile"
+        window.location.href=`${url}?token=${token}`
+}
+}catch(e){
+    console.log(e);
+}
+});
 
 historyButton.addEventListener("click", async () => {
   try{
@@ -10,7 +27,7 @@ historyButton.addEventListener("click", async () => {
         token = sessionStorage.getItem('jwtToken')
     }
     if (token !== null) {
-        const url = "/game/history"
+        const url = "/history"
         window.location.href=`${url}?token=${token}`
 }
 }catch(e){
