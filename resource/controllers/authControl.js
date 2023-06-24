@@ -1,5 +1,5 @@
 const axios = require("axios");
-const DB = require("./dbControl")
+const DB = require("./dbControl");
 
 const validateAuth = async (req, res, next) => {
   try {
@@ -33,22 +33,25 @@ const validateAuth = async (req, res, next) => {
 };
 
 const checkRegistration = async (email) => {
-  console.log("Checking user to see if it is reg'd")
-  const query = "SELECT COUNT(*) AS count FROM USERS WHERE user_email = @user_email";
+  console.log("Checking user to see if it is reg'd");
+  const query =
+    "SELECT COUNT(*) AS count FROM USERS WHERE user_email = @user_email";
   let result = null;
-  try{
-     result = await DB.executeQuery(query, { user_email: email.toLowerCase() });
-     console.log("DB result", result);
-     if(result[0]){
-        if(result[0].count === 0){
-          const insertQuery = "INSERT INTO USERS(user_email) VALUES (@user_email)"
-           result = await DB.executeQuery(insertQuery, { user_email: email.toLowerCase()});
-        }
-     }
-   }catch(e){
-     console.log("Catching a query we unexpected behavior")
+  try {
+    result = await DB.executeQuery(query, { user_email: email.toLowerCase() });
+    console.log("DB result", result);
+    if (result[0]) {
+      if (result[0].count === 0) {
+        const insertQuery =
+          "INSERT INTO USERS(user_email) VALUES (@user_email)";
+        result = await DB.executeQuery(insertQuery, {
+          user_email: email.toLowerCase(),
+        });
+      }
+    }
+  } catch (e) {
+    console.log("Catching a query with unexpected behavior");
   }
-  
-}
+};
 
 module.exports = { validateAuth, checkRegistration };
