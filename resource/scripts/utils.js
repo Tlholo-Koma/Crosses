@@ -18,6 +18,6 @@ const authorizedRedirect = async (token, url) => {
 };
 
 module.exports = {
-  authorizedFetch: function () {},
-  authorizedRedirect: function () {},
+  authorizedFetch,
+  authorizedRedirect,
 };
