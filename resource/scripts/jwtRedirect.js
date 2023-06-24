@@ -7,9 +7,10 @@ const redirect = async () =>{
         const urlParams = new URLSearchParams(window.location.search);
         let token = urlParams.get('token') || null;
         if(!token){
-            token = localStorage.getItem('jwtToken')
+            token = sessionStorage.getItem('jwtToken')
         }
         if (token !== null) {
+            sessionStorage.setItem("jwtToken", token)
             const url = "/Game"
             window.location.href=`${url}?token=${token}`
     }

@@ -20,12 +20,13 @@ loginButton.addEventListener("click", async () => {
   };
 
   try {
-    let storedToken = localStorage.getItem("jwtToken") || null;
+    let storedToken = sessionStorage.getItem("jwtToken") || null;
     if (!storedToken) {
       await getToken(data);
-      storedToken = localStorage.getItem("jwtToken");
+      storedToken = sessionStorage.getItem("jwtToken");
     }
     checkToken(storedToken);
+    window.alert("Please check your email to login")
   } catch (error) {
     console.log(error);
   }
@@ -59,7 +60,10 @@ const getToken = async (data) => {
 
   if (response.ok) {
     const token = await response.json();
-    localStorage.setItem("jwtToken", token);
+    sessionStorage.setItem("jwtToken", token);
+    console.log("Hey - did we save it?")
+    console.log(sessionStorage.getItem('jwtToken'))
+    
   } else {
     throw new Error("Error: " + response.status);
   }

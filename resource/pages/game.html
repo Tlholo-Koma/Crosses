@@ -6,13 +6,15 @@
         <meta name="keywords" content="game tic tac toe">
         <link rel="stylesheet" href="game.css">
         <link rel="stylesheet" href="main.css">
+        <script src="./game.js" defer></script>
+        <script src="./logout.js" defer></script>
     </head>
     <body>
         <header class="page-header">
             <nav>
                 <a id="history" href="#">Win history</a>
-                <a href="#">Profile</a>
-                <a href ="#">Log out</a>
+                <a href="#">Preferences</a>
+                <a id="logoutButton" href ="#">Log out</a>
             </nav>
             <h1>Tic Tac Toe<sup>Tm</sup></h1>
             <h2 class="current-player">O</h2>
@@ -32,6 +34,6 @@
             <button id="bottom-middle" data-state="" onclick="handleClick(this)"></button>
             <button id="bottom-right" data-state="" onclick="handleClick(this)"></button>
         </main>
-        <script src="./game.js"></script>
+        
     </body>
 </html>

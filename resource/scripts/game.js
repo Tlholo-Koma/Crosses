@@ -1,3 +1,4 @@
+const baseURLGame = window.location.href.split("/").slice(0, 3).join("/");
 let currentPlayer = 'O';
 const historyButton = document.getElementById('history');
 
@@ -6,7 +7,7 @@ historyButton.addEventListener("click", async () => {
     const urlParams = new URLSearchParams(window.location.search);
     let token = urlParams.get('token') || null;
     if(!token){
-        token = localStorage.getItem('jwtToken')
+        token = sessionStorage.getItem('jwtToken')
     }
     if (token !== null) {
         const url = "/game/history"
@@ -17,7 +18,7 @@ historyButton.addEventListener("click", async () => {
 }
 });
 
-function handleClick(button) {
+ async function handleClick(button) {
   if (button.innerText !== '') {
     return;
   }

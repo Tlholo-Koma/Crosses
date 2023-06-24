@@ -1,10 +1,10 @@
 const removeExpiredTokens = () => {
-    const jwtToken = localStorage.getItem("jwtToken");
+    const jwtToken = sessionStorage.getItem("jwtToken");
     if (jwtToken) {
       const tokenData = parseJwt(jwtToken);
       if (tokenData.exp && Date.now() >= tokenData.exp * 1000) {
         // Token has expired, remove it from local storage
-        localStorage.removeItem("jwtToken");
+        sessionStorage.removeItem("jwtToken");
       }
     }
   };
