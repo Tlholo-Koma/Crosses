@@ -11,6 +11,8 @@ const app = express();
 const loginRoutes = require("./routes/loginRoute");
 const gameRoutes = require("./routes/gameRoute");
 const dataRoutes = require("./routes/dataRoute");
+const profileRoutes = require("./routes/profileRoute");
+const historyRoutes = require("./routes/historyRoute");
 
 const bootstrap = async () => {
   await googleStrat.configurePassport();
@@ -25,7 +27,9 @@ const bootstrap = async () => {
   });
   app.use("/login", loginRoutes);
   app.use("/Game", gameRoutes);
+  app.use("/profile",profileRoutes)
   app.use("/data", dataRoutes);
+  app.use("/history",historyRoutes);
 
   app.listen(port, () => {
     console.log(`Resource Server listening on http://localhost:${port}`);

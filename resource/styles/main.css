@@ -1,3 +1,51 @@
 :root{
   --main-font: "Times New Roman", Times, serif;
 }
+html,
+
+body{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: var(--main-font);
+  text-shadow: 0 1px 3px #000;
+}
+
+header.page-header{
+  justify-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+h1{
+  font-size: 4rem;
+}
+
+nav{
+  display: flex;
+  gap: 1rem;
+}
+
+a{
+  color: #000;
+  text-decoration: none;
+}
+
+h1{
+  font-size: calc(20px+1vw);
+  padding-bottom: 2rem;
+  align-self: center;
+}
+h2{
+  padding-bottom: 1rem;
+  align-self: center;
+}
+sup{
+  border-radius: 50%;
+  font-size: 1rem;
+}

@@ -57,10 +57,6 @@ h2{
   align-self: center;
 }
 
-nav{
-  justify-self: flex-end;
-}
-
 main button{
   width: 10rem;
   height: 10rem;

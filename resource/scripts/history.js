@@ -1,4 +1,5 @@
 const gameButton = document.getElementById("gameButton");
+const profileButton = document.getElementById("profile");
 const POSSIBLE_WINNERS = ["O", "X", "—"];
 const urlParams = new URLSearchParams(window.location.search);
 const token = urlParams.get("token") || null;
@@ -10,6 +11,22 @@ gameButton.addEventListener("click", async () => {
     }
     if (token !== null) {
       const url = "/Game";
+      window.location.href = `${url}?token=${token}`;
+    }
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+profileButton.addEventListener("click", async () => {
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    let token = urlParams.get("token") || null;
+    if (!token) {
+      token = sessionStorage.getItem("jwtToken");
+    }
+    if (token !== null) {
+      const url = "/profile";
       window.location.href = `${url}?token=${token}`;
     }
   } catch (e) {

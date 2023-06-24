@@ -1,0 +1,8 @@
+@import url('./main.css');
+
+html,
+
+h3{
+  padding-bottom: 1rem;
+  font-weight: lighter;
+}
