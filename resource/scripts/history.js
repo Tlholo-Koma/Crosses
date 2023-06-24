@@ -1,3 +1,4 @@
+const baseURLProfile = window.location.href.split("/").slice(0, 3).join("/");
 const gameButton = document.getElementById("gameButton");
 const profileButton = document.getElementById("profile");
 const POSSIBLE_WINNERS = ["O", "X", "—"];
@@ -35,12 +36,9 @@ profileButton.addEventListener("click", async () => {
 });
 
 async function getWins() {
-  const response = await fetch(
-    `http://localhost:3001/data/games?token=${token}`,
-    {
-      method: "GET",
-    }
-  );
+  const response = await fetch(`${baseURLProfile}/data/games?token=${token}`, {
+    method: "GET",
+  });
   const data = await response.json();
   return data.map((game) => POSSIBLE_WINNERS[game.lookup_result_type_id - 1]);
 }
@@ -58,7 +56,7 @@ function addWinBlock(winsGrid, win, blockNumber) {
 
 async function drawCurrentPlayer() {
   const currPlayerText = document.getElementById("currentPlayer");
-  const response = await fetch("http://localhost:3000/login/user", {
+  const response = await fetch(`${baseURLProfile}/profile/user`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
