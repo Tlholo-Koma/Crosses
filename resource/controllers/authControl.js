@@ -6,9 +6,10 @@ const validateAuth = async (req, res, next) => {
     const authHeader = req.headers["authorization"];
     const token = authHeader && authHeader.split(" ")[1]; // Assuming the header value is in the format: Bearer <token>
     const queryToken = req.query.token;
+    const bodyToken = req.body.token
 
     const requestData = {
-      token: token || queryToken,
+      token: token || queryToken || bodyToken,
       // other data you want to include in the request body
     };
 
