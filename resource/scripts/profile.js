@@ -45,7 +45,7 @@ history.addEventListener("click", async () => {
       token = sessionStorage.getItem("jwtToken");
     }
     if (token !== null) {
-      const url = "/Game/history";
+      const url = "/history";
       window.location.href = `${url}?token=${token}`;
     }
   } catch (e) {
