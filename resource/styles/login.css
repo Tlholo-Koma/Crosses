@@ -1,4 +1,6 @@
 @import url("../styles/main.css");
+html,
+
 body{
     height: 100vh;
     width: 100vw;

@@ -1,4 +1,5 @@
 const gameButton = document.getElementById('gameButton');
+const profileButton = document.getElementById('profile');
 
 gameButton.addEventListener("click", async () => {
   try{
@@ -15,6 +16,22 @@ gameButton.addEventListener("click", async () => {
     console.log(e);
 }
 });
+
+profileButton.addEventListener("click", async () => {
+    try{
+      const urlParams = new URLSearchParams(window.location.search);
+      let token = urlParams.get('token') || null;
+      if(!token){
+          token = sessionStorage.getItem('jwtToken')
+      }
+      if (token !== null) {
+          const url = "/profile"
+          window.location.href=`${url}?token=${token}`
+  }
+  }catch(e){
+      console.log(e);
+  }
+  });
 
 
 function randomWins(count) {
