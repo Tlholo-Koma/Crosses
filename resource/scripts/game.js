@@ -33,7 +33,6 @@ historyButton.addEventListener("click", async () => {
   } else if (checkTie()) {
     messageContent.innerText = 'It\'s a tie!';
     messageOverlay.style.display = 'flex';
-    resetBoard();
   } else {
     currentPlayer = currentPlayer === 'O' ? 'X' : 'O';
   }
@@ -42,8 +41,16 @@ historyButton.addEventListener("click", async () => {
 function playAgain() {
   const messageOverlay = document.getElementById('message-overlay');
   messageOverlay.style.display = 'none';
-  resetBoard(); // Reset the board
+
+  const playAgainButton = document.getElementById("play-again-button");
+  playAgainButton.removeAttribute("data-state");
+  playAgainButton.style.display = "block";
+
+  resetBoard();
+  
+  playAgainButton.innerText = "Play Again";
 }
+
 
 function resetBoard() {
   const buttons = document.querySelectorAll('button');
@@ -55,6 +62,7 @@ function resetBoard() {
   currentPlayerDisplay.innerText = 'O';
   currentPlayer = 'O';
 }
+
 
 
 function checkWinner() {

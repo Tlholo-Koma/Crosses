@@ -115,6 +115,7 @@ main button:visited{
 }
 
 .play-again-button {
+  display: block;
   margin: auto;
   height: 2rem;
   width: max-content;
