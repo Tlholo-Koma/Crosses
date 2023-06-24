@@ -2,8 +2,9 @@ const express = require("express");
 const axios = require("axios");
 const db = require("../controllers/dbControl");
 const dataRouter = express.Router();
+const auth = require("../controllers/authControl")
 
-dataRouter.get("/result-types", async (req, res) => {
+dataRouter.get("/result-types", auth.validateAuth, async (req, res) => {
   const query = `SELECT * FROM LOOKUP_RESULT_TYPES;`;
   try {
     res.send(await db.executeQuery(query, {}));
@@ -12,7 +13,7 @@ dataRouter.get("/result-types", async (req, res) => {
   }
 });
 
-dataRouter.get("/games", async (req, res) => {
+dataRouter.get("/games", auth.validateAuth, async (req, res) => {
   const token = req.query.token;
   const response = await axios.post("http://localhost:3000/login/user", {
     token: token,
@@ -31,7 +32,7 @@ dataRouter.get("/games", async (req, res) => {
   }
 });
 
-dataRouter.post("/game", async (req, res) => {
+dataRouter.post("/game",auth.validateAuth, async (req, res) => {
   const token = req.query.token;
   const response = await axios.post("http://localhost:3000/login/user", {
     token: token,
