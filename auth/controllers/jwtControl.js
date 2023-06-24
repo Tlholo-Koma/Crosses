@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-const db = require("./dbControl");
 let privateKey = null;
 let publicKey = null;
 const local = require("./localControl");
@@ -10,18 +9,6 @@ const getToken = async (user) => {
       "ascii"
     );
   }
-
-  // const query = "SELECT COUNT(*) AS count FROM USERS WHERE user_email = @user_email";
-  // let result = null;
-  // try{
-  //   result = await db.executeQuery(query, { user_email: user.toLowerCase() });
-  // }catch(e){
-  //   console.log("Catching a query we unexpected behavior")
-  //   console
-  // }
-  // if(result[0]){
-  //     console.log("DB result", result[0]);
-  // }
 
   const signOptions = {
     issuer: "Xand0",

@@ -24,8 +24,10 @@ loginRouter.get(
     session: false,
   }),
   async (req, res) => {
+    
     const email = req.user;
     try {
+      await auth.checkRegistration(email)
       const requestData = {
         email: email,
         socialLogin: true,
@@ -59,6 +61,7 @@ loginRouter.get(
   async (req, res) => {
     const email = req.user;
     try {
+      await auth.checkRegistration(email)
       const requestData = {
         email: email,
         socialLogin: true,
@@ -82,12 +85,17 @@ loginRouter.post("/token", async function (req, res) {
   console.log("Hit token");
   const username = req.body.email;
   console.log(username);
+  await auth.checkRegistration(username)
   try {
+    if(!username){
+      res.send(400)
+    }
     const requestData = {
       email: username,
       socialLogin: false,
       // other data you want to include in the request body
     };
+
     const response = await axios.post(
       `${process.env.AUTHSERVER}/login/token`,
       requestData
