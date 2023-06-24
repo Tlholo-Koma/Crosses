@@ -5,7 +5,7 @@ gameButton.addEventListener("click", async () => {
     const urlParams = new URLSearchParams(window.location.search);
     let token = urlParams.get('token') || null;
     if(!token){
-        token = localStorage.getItem('jwtToken')
+        token = sessionStorage.getItem('jwtToken')
     }
     if (token !== null) {
         const url = "/Game"

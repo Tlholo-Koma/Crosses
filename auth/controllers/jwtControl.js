@@ -42,9 +42,6 @@ const getToken = async (user) => {
 const verifyToken = async (token) => {
   if (publicKey === null) {
     publicKey = Buffer.from(process.env.PUBLICKEY, "base64").toString("ascii");
-    // const buff = Buffer.from(publicKey).toString('base64');
-    // console.log("public buff")
-    // console.log(buff);
   }
 
   const verifyOptions = {

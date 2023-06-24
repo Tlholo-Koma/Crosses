@@ -14,5 +14,5 @@ export const authorizedFetch = async (url, method, token, body) => {
 };
 
 export const authorizedRedirect = async (token,url) => {
-    window.location.href=`${url}?token=${localStorage.getItem("jwtToken")}`
+    window.location.href=`${url}?token=${sessionStorage.getItem("jwtToken")}`
 }
