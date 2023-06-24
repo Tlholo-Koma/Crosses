@@ -15,6 +15,15 @@ githubLoginButton.addEventListener("click", async () => {
 
 loginButton.addEventListener("click", async () => {
   const user = usernameInput.value;
+  if(user.includes("@") &&
+    user.includes(".") &&
+    user.length >= 5){
+      alert()
+  }else{
+    //display bad email input;
+    alert("The email you entered is invalid")
+    return;
+  }
   const data = {
     email: user,
   };
@@ -26,7 +35,7 @@ loginButton.addEventListener("click", async () => {
       storedToken = sessionStorage.getItem("jwtToken");
     }
     checkToken(storedToken);
-    window.alert("Please check your email to login")
+    alert("Please check your email to login! :)")
   } catch (error) {
     console.log(error);
   }
