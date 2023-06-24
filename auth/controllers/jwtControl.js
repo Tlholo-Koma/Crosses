@@ -53,10 +53,37 @@ const verifyToken = async (token) => {
   return false;
 };
 
+const getEmailFromToken = async (token) => {
+  if (publicKey === null) {
+    publicKey = Buffer.from(process.env.PUBLICKEY, "base64").toString("ascii");
+  }
+
+  const verifyOptions = {
+    issuer: "Xand0",
+    subject: "Auth",
+    audience: "user",
+    expiresIn: "1h",
+    algorithm: ["RS256"],
+  };
+
+  try {
+    const decoded = jwt.verify(token, publicKey, verifyOptions);
+    console.log("Token verified:", decoded);
+    //replace later with better stuff
+    if (decoded.iss === "Xand0") {
+      return decoded.email;
+    }
+  } catch (error) {
+    console.error("Token verification failed:", error);
+    return false;
+  }
+  return false;
+};
+
 const generateJwtLink = (token) => {
   const encodedToken = encodeURIComponent(token);
   const link = `${process.env.EMAILLINK}/login?token=${encodedToken}`;
   return link;
 };
 
-module.exports = { getToken, verifyToken, generateJwtLink };
+module.exports = { getToken, verifyToken, generateJwtLink, getEmailFromToken };

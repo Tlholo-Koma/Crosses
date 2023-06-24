@@ -26,4 +26,15 @@ loginRouter.post("/verify", async function (req, res) {
   
 });
 
+loginRouter.post("/user", async function (req, res) {
+  const token = req.body.token;
+  const result = await jwt.getEmailFromToken(token)
+  if (result !== false && result) {
+    res.json(result)
+  }else{
+    res.json(null);
+  }
+  
+});
+
 module.exports = loginRouter;
