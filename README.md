@@ -1,19 +1,71 @@
-# Crosses
+# Off-grey tic tac toe
 
-#Before you start
+This readme will explain how to run the repo locally
 
-Please contact a repo member for the required testing .env file
 
-# How to use
+## Run Locally
 
--> open a terminal in the route of the project
--> run the commands "npm run install-auth" and "npm run install-resource"
-## How to run resource server
--> in the root of the project run the command "npm run run-resource"
-## How to run auth server
--> in root of the project run the command "npm run run-auth"
+Clone the project
 
-# Accessing the website locally
-The resource server is served on http://localhost:3001
-The auth server is served on http://localhost:3000
+```bash
+  git clone https://github.com/IvanVBBD/Crosses.git
+```
+
+Go to the project directory root
+
+```bash
+  cd Crosses
+```
+
+You must be using node version 16.13.2, You can check your version with
+
+```bash
+  node --version
+```
+
+Download the enviroment files
+```bash
+https://drive.google.com/file/d/10q8ukAv2BtDTv02_ObpGJyYxr5Wxycne/view?usp=sharing
+```
+
+Place the auth enviroment file in the auth folder of the repo
+
+Place the resource enviroement file in the resource folder of the repo
+
+Install auth dependencies
+
+```bash
+  npm run install-auth
+```
+
+Install resource dependencies
+
+```bash
+  npm run install-resource
+```
+
+Start the auth server
+
+```bash
+  npm run run-auth
+```
+
+Start the resource server
+
+```bash
+  npm run run-resource
+```
+
+Once running - you can find the auth server at
+
+```bash
+  http:localhost:3000
+```
+
+Once running - you can find the resource server at
+
+```bash
+  http:localhost:3001
+```
+
 
