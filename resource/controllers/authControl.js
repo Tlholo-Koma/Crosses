@@ -1,5 +1,6 @@
 const axios = require("axios");
 const DB = require("./dbControl");
+const { generateUsername } = require("./usernameControl");
 
 const validateAuth = async (req, res, next) => {
   try {
@@ -42,14 +43,16 @@ const checkRegistration = async (email) => {
     "SELECT COUNT(*) AS count FROM USERS WHERE user_email = @user_email";
   let result = null;
   try {
-    result = await DB.executeQuery(query, { user_email: email.toLowerCase() });
+    result = await DB.executeQuery(query, { user_email: email.toLowerCase()});
     console.log("DB result", result);
     if (result[0]) {
       if (result[0].count === 0) {
+        const username = await generateUsername()
         const insertQuery =
-          "INSERT INTO USERS(user_email) VALUES (@user_email)";
+          "INSERT INTO USERS(user_email,user_name) VALUES (@user_email,@user_name)";
         result = await DB.executeQuery(insertQuery, {
           user_email: email.toLowerCase(),
+          user_name: username.toLowerCase()
         });
       }
     }
@@ -58,4 +61,27 @@ const checkRegistration = async (email) => {
   }
 };
 
-module.exports = { validateAuth, checkRegistration };
+const getUser = async (token) =>{
+  console.log("we hit this route")
+  try{
+    const requestData = {
+      token: token
+      // other data you want to include in the request body
+    };
+    const response = await axios.post(
+      `${process.env.AUTHSERVER}/login/user`,
+      requestData
+    );
+    const user = response.data;
+    console.log("What we got back from auth server")
+    console.log(user);
+    return user
+    // Process the response data here
+  } catch (error) {
+    console.error(error);
+    // Handle the error here
+    return null;
+  }
+}
+
+module.exports = { validateAuth, checkRegistration, getUser };

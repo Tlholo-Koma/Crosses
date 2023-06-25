@@ -25,7 +25,7 @@ You must be using node version 16.13.2, You can check your version with
 
 Download the enviroment files
 ```bash
-https://drive.google.com/file/d/10q8ukAv2BtDTv02_ObpGJyYxr5Wxycne/view?usp=sharing
+https://drive.google.com/file/d/1DFyafAuLcDsYpSdh99qeXRv5R6axn1Ms/view?usp=sharing
 ```
 
 Place the auth enviroment file in the auth folder of the repo
@@ -59,13 +59,13 @@ Start the resource server
 Once running - you can find the auth server at
 
 ```bash
-  http:localhost:3000
+  http://localhost:3000
 ```
 
 Once running - you can find the resource server at
 
 ```bash
-  http:localhost:3001
+  http://localhost:3001
 ```
 
 
