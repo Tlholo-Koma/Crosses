@@ -1,6 +1,6 @@
 // This could be split up into authorizedGet, authorizedPost etc
 // We should use this to replace all use of axios
-export const authorizedFetch = async (url, method, token, body) => {
+const authorizedFetch = async (url, method, token, body) => {
   const response = await fetch(url, {
     method: method,
     headers: {
@@ -13,6 +13,11 @@ export const authorizedFetch = async (url, method, token, body) => {
   return response.json();
 };
 
-export const authorizedRedirect = async (token,url) => {
-    window.location.href=`${url}?token=${sessionStorage.getItem("jwtToken")}`
-}
+const authorizedRedirect = async (token, url) => {
+  window.location.href = `${url}?token=${sessionStorage.getItem("jwtToken")}`;
+};
+
+module.exports = {
+  authorizedFetch,
+  authorizedRedirect,
+};

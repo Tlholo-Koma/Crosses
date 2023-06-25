@@ -1,9 +1,10 @@
 const express = require("express");
+const axios = require("axios");
 const db = require("../controllers/dbControl");
 const dataRouter = express.Router();
+const auth = require("../controllers/authControl");
 
-dataRouter.get("/result-types", async (req, res) => {
-  const email = req.params.email;
+dataRouter.get("/result-types", auth.validateAuth, async (req, res) => {
   const query = `SELECT * FROM LOOKUP_RESULT_TYPES;`;
   try {
     res.send(await db.executeQuery(query, {}));
@@ -12,8 +13,12 @@ dataRouter.get("/result-types", async (req, res) => {
   }
 });
 
-dataRouter.get("/:email/games", async (req, res) => {
-  const email = req.params.email;
+dataRouter.get("/games", auth.validateAuth, async (req, res) => {
+  const token = req.query.token;
+  const response = await axios.post(`${process.env.AUTHSERVER}/login/user`, {
+    token: token,
+  });
+  const email = response.data;
   const query = `SELECT GAMES.lookup_result_type_id, description, game_time 
                  FROM GAMES INNER JOIN LOOKUP_RESULT_TYPES 
                  ON GAMES.lookup_result_type_id = LOOKUP_RESULT_TYPES.lookup_result_type_id 
@@ -27,9 +32,13 @@ dataRouter.get("/:email/games", async (req, res) => {
   }
 });
 
-dataRouter.post("/:email/game", async (req, res) => {
-  const email = req.params.email;
-  const result_type_id = req.body.id;
+dataRouter.post("/game", auth.validateAuth, async (req, res) => {
+  const token = req.query.token;
+  const response = await axios.post(`${process.env.AUTHSERVER}/login/user`, {
+    token: token,
+  });
+  const email = response.data;
+  const result_type_id = req.body.result_type_id;
   const query = `INSERT INTO GAMES (user_id, lookup_result_type_id)
                  SELECT user_id, @result_type_id FROM USERS
                  WHERE user_email=@email;`;
