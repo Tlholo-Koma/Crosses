@@ -6,7 +6,7 @@
         <meta name="keywords" content="html tutorial template">
         <link rel="stylesheet" href="login.css">
         <link rel="stylesheet" href="main.css">
-        <script src="./jwtExpire.js" defer ></script>
+        <script src="./jwtExpire.js" defer></script>
         <script src="./jwtRedirect.js" defer></script>
         <script src="./login.js" defer></script>
     </head>
@@ -15,16 +15,21 @@
             <section>
                 <h1>Off-Grey Tic Tac Toe</h1>
             </section>
-                <section>
-                    <input type="email" placeholder="Email" type="text" id="username" name="username" required>
-                </section>
-                <section>
-                    <button id = "loginButton" class="own-login">Login</button>
-                </section>
-                <section>
-                    <button id = "googleLoginButton"><img src="./greyscale_google_logo.png"></button>
-                    <button id = "githubLoginButton"><img src="./github-logo.png"></button>
-                </section>
+            <section class="notification" id="inlineNotification" style="display: none;">
+                <h3>Go check your email! <br\> (Dont forget the spam folder!) </h3>
+            </section>
+            <section>
+                <input type="email" placeholder="Email" type="text"
+                    id="username" name="username" required>
+            </section>
+            <section>
+                <button id="loginButton" class="own-login">Login</button>
+            </section>
+            <section>
+                <button id="googleLoginButton"><img
+                        src="./greyscale_google_logo.png"></button>
+                <button id="githubLoginButton"><img src="./github-logo.png"></button>
+            </section>
         </article>
     </body>
 </html>

@@ -4,6 +4,21 @@ const loginButton = document.getElementById("loginButton");
 const googleLoginButton = document.getElementById("googleLoginButton");
 const githubLoginButton = document.getElementById("githubLoginButton");
 const usernameInput = document.getElementById("username");
+const section = document.getElementById('inlineNotification');
+let isSectionVisible = false;
+
+const inlineNotification = async () =>{
+  isSectionVisible = !isSectionVisible; // Toggle the boolean value
+  if (isSectionVisible) {
+    section.style.display = 'block'; // Show the section
+    setTimeout(() => {
+      section.style.display = 'none'; // Hide the section after 5 seconds
+      isSectionVisible = false; // Update the boolean value
+    }, 5000);
+  } else {
+    section.style.display = 'none'; // Hide the section
+  }
+}
 
 googleLoginButton.addEventListener("click", async () => {
     window.location.href = '/Login/google';
@@ -18,10 +33,10 @@ loginButton.addEventListener("click", async () => {
   if(user.includes("@") &&
     user.includes(".") &&
     user.length >= 5){
-      alert()
+      inlineNotification()
   }else{
     //display bad email input;
-    alert("The email you entered is invalid")
+    
     return;
   }
   const data = {
@@ -74,3 +89,6 @@ const getToken = async (data) => {
     throw new Error("Error: " + response.status);
   }
 };
+
+
+
