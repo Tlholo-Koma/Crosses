@@ -38,11 +38,13 @@ button.own-login {
   text-decoration: underline overline;
   font-size: 2rem;
   padding-bottom: 1rem;
+  cursor: pointer;
 }
 
 img {
   width: 4rem;
   height: 4rem;
+  cursor: pointer;
 }
 
 .notification {
