@@ -22,10 +22,16 @@ const inlineNotification = async (message) =>{
 }
 
 googleLoginButton.addEventListener("click", async () => {
+    googleLoginButton.disable = true;
+    loginButton.disable = true;
+    githubLoginButton.disable = true;
     window.location.href = '/Login/google';
 });
 
 githubLoginButton.addEventListener("click", async () => {
+    googleLoginButton.disable = true;
+    loginButton.disable = true;
+    githubLoginButton.disable = true;
     window.location.href='/Login/github'
 });
 
