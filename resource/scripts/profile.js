@@ -1,7 +1,10 @@
 const baseURLProfile = window.location.href.split("/").slice(0, 3).join("/");
 const history = document.getElementById("history");
 const game = document.getElementById("gameButton");
-const heading = document.getElementById("displayName");
+const heading = document.getElementById("displayEmail");
+const userHeader = document.getElementById("displayName")
+const newUser = document.getElementById("getNewUsername");
+
 
 const getUser = async () => {
   const data = {
@@ -18,6 +21,19 @@ const getUser = async () => {
   const userData = await user.json();
   if (user !== null) {
     heading.textContent = userData;
+  }
+
+  const username = await fetch(`${baseURLProfile}/profile/username`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  console.log(username)
+  const usernameData = await username.json();
+  if (username !== null) {
+    userHeader.textContent = usernameData;
   }
 };
 
@@ -52,5 +68,27 @@ history.addEventListener("click", async () => {
     console.log(e);
   }
 });
+
+
+newUser.addEventListener('click', async () => {
+  const data = {
+    token: sessionStorage.getItem("jwtToken")
+  }
+  newUser.disabled = true;
+  const username = await fetch(`${baseURLProfile}/profile/generateUsername`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  newUser.disabled = false;
+  console.log(username)
+  const usernameData = await username.json();
+  if (username !== null) {
+    userHeader.textContent = usernameData;
+  }
+
+})
 
 getUser();
