@@ -1,9 +1,8 @@
-:root{
+:root {
   --main-font: "Times New Roman", Times, serif;
 }
 html,
-
-body{
+body {
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -13,7 +12,7 @@ body{
   text-shadow: 0 1px 3px #000;
 }
 
-header.page-header{
+header.page-header {
   justify-self: flex-start;
   display: flex;
   flex-direction: column;
@@ -22,30 +21,31 @@ header.page-header{
   width: 100%;
 }
 
-h1{
+h1 {
   font-size: 4rem;
 }
 
-nav{
+nav {
   display: flex;
   gap: 1rem;
 }
 
-a{
+a {
   color: #000;
   text-decoration: none;
+  font-size: x-large;
 }
 
-h1{
+h1 {
   font-size: calc(20px+1vw);
   padding-bottom: 2rem;
   align-self: center;
 }
-h2{
+h2 {
   padding-bottom: 1rem;
   align-self: center;
 }
-sup{
+sup {
   border-radius: 50%;
   font-size: 1rem;
 }

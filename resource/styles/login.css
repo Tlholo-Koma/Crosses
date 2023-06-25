@@ -1,55 +1,54 @@
 @import url("../styles/main.css");
 html,
-
-body{
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    font-family: var(--main-font);
-    text-shadow: 0 1px 3px #000;
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  font-family: var(--main-font);
+  text-shadow: 0 1px 3px #000;
 }
-h1{
-    font-size: 4rem;
+h1 {
+  font-size: 4rem;
 }
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-input{
-    font-family: inherit;
-    font-size: 2rem;
-    padding: 0 1rem 0 1rem;
-}
-
-article{
-    gap: 1rem;
+input {
+  font-family: inherit;
+  font-size: 2rem;
+  padding: 0 1rem 0 1rem;
 }
 
-button{
-    border: none;
-    background-color: #00000000;
+article {
+  gap: 1rem;
+}
+
+button {
+  border: none;
+  background-color: #00000000;
 }
 
 button.own-login {
-    text-decoration: underline overline;
-    font-size: 2rem;
-    padding-bottom: 1rem;
+  text-decoration: underline overline;
+  font-size: 2rem;
+  padding-bottom: 1rem;
 }
 
-img{
-    width: 4rem;
-    height: 4rem;
+img {
+  width: 4rem;
+  height: 4rem;
 }
 
 .notification {
-    background-color: #f8f8f8;
-    border: 1px solid #ddd;
-    color: #333;
-    padding: 10px;
-    font-size: 16px;
-  }
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  color: #333;
+  padding: 10px;
+  font-size: 16px;
+}

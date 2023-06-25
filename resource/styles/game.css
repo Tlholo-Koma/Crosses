@@ -1,7 +1,7 @@
 @import url("./main.css");
 
 html,
-body{
+body {
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -12,7 +12,7 @@ body{
   padding: 0;
 }
 
-header.page-header{
+header.page-header {
   justify-self: flex-start;
   display: flex;
   flex-direction: column;
@@ -32,59 +32,64 @@ header.page-header{
   box-sizing: border-box;
 }
 
-sup{
+sup {
   border-radius: 50%;
   font-size: 1rem;
 }
 
-nav{
+nav {
   display: flex;
   gap: 1rem;
 }
 
-a{
+a {
   color: #000;
   text-decoration: none;
 }
 
-h1{
+h1 {
   font-size: calc(20px+1vw);
   padding-bottom: 2rem;
   align-self: center;
 }
-h2{
+h2 {
   padding-bottom: 1rem;
   align-self: center;
 }
 
-main button{
+header > h2 {
+  font-size: 40px;
+}
+
+main button {
   width: 10rem;
   height: 10rem;
   background-color: white;
   border: none;
   font-family: inherit;
+  font-size: 120px;
 }
 
-main button:hover{
+main button:hover {
   cursor: pointer;
   background-color: gray;
-  border:none;
+  border: none;
 }
 
-main button:active{
+main button:active {
   background-color: #000;
   color: white;
 }
 
-main button:focus{
+main button:focus {
   background-color: rgb(25, 25, 25);
   color: white;
-  border:none
+  border: none;
 }
-main button:visited{
+main button:visited {
   background-color: rgb(25, 25, 25);
   color: white;
-  border:none
+  border: none;
 }
 
 #message-overlay {
