@@ -59,13 +59,13 @@ Start the resource server
 Once running - you can find the auth server at
 
 ```bash
-  http:localhost:3000
+  http://localhost:3000
 ```
 
 Once running - you can find the resource server at
 
 ```bash
-  http:localhost:3001
+  http://localhost:3001
 ```
 
 
