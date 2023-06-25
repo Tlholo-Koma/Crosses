@@ -56,7 +56,7 @@ function addWinBlock(winsGrid, win, blockNumber) {
 
 async function drawCurrentPlayer() {
   const currPlayerText = document.getElementById("currentPlayer");
-  const response = await fetch(`${baseURLProfile}/profile/user`, {
+  const response = await fetch(`${baseURLProfile}/profile/username`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

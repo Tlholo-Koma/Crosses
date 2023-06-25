@@ -7,24 +7,31 @@ const usernameInput = document.getElementById("username");
 const section = document.getElementById('inlineNotification');
 let isSectionVisible = false;
 
-const inlineNotification = async () =>{
+const inlineNotification = async (message) =>{
   isSectionVisible = !isSectionVisible; // Toggle the boolean value
+  section.textContent = message
   if (isSectionVisible) {
     section.style.display = 'block'; // Show the section
     setTimeout(() => {
       section.style.display = 'none'; // Hide the section after 5 seconds
       isSectionVisible = false; // Update the boolean value
-    }, 5000);
+    }, 2000);
   } else {
     section.style.display = 'none'; // Hide the section
   }
 }
 
 googleLoginButton.addEventListener("click", async () => {
+    googleLoginButton.disable = true;
+    loginButton.disable = true;
+    githubLoginButton.disable = true;
     window.location.href = '/Login/google';
 });
 
 githubLoginButton.addEventListener("click", async () => {
+    googleLoginButton.disable = true;
+    loginButton.disable = true;
+    githubLoginButton.disable = true;
     window.location.href='/Login/github'
 });
 
@@ -33,10 +40,10 @@ loginButton.addEventListener("click", async () => {
   if(user.includes("@") &&
     user.includes(".") &&
     user.length >= 5){
-      inlineNotification()
+      inlineNotification("Go check your email! \n (Dont forget the spam folder!)")
   }else{
     //display bad email input;
-    
+    inlineNotification("Please enter a valid email")
     return;
   }
   const data = {
