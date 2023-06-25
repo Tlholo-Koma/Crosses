@@ -45,3 +45,11 @@ img{
     width: 4rem;
     height: 4rem;
 }
+
+.notification {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    color: #333;
+    padding: 10px;
+    font-size: 16px;
+  }
