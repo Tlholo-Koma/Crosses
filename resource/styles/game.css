@@ -46,7 +46,7 @@ a {
 }
 
 h1 {
-  font-size: calc(20px+1vw);
+  font-size: calc(60px + 1vw);
   padding-bottom: 1rem;
   align-self: center;
 }
