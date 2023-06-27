@@ -38,13 +38,12 @@ const validateAuth = async (req, res, next) => {
 };
 
 const checkRegistration = async (email) => {
-  console.log("Checking user to see if it is reg'd");
+
   const query =
     "SELECT COUNT(*) AS count FROM USERS WHERE user_email = @user_email";
   let result = null;
   try {
     result = await DB.executeQuery(query, { user_email: email.toLowerCase()});
-    console.log("DB result", result);
     if (result[0]) {
       if (result[0].count === 0) {
         const username = await generateUsername()
@@ -62,7 +61,6 @@ const checkRegistration = async (email) => {
 };
 
 const getUser = async (token) =>{
-  console.log("we hit this route")
   try{
     const requestData = {
       token: token
@@ -73,8 +71,6 @@ const getUser = async (token) =>{
       requestData
     );
     const user = response.data;
-    console.log("What we got back from auth server")
-    console.log(user);
     return user
     // Process the response data here
   } catch (error) {

@@ -80,9 +80,7 @@ loginRouter.get(
 );
 
 loginRouter.post("/token", async function (req, res) {
-  console.log("Hit token");
   const username = req.body.email;
-  console.log(username);
   try {
     if(!username){
       res.send(400)

@@ -30,7 +30,6 @@ const getUser = async () => {
     },
     body: JSON.stringify(data),
   });
-  console.log(username)
   const usernameData = await username.json();
   if (username !== null) {
     userHeader.textContent = usernameData;
@@ -83,7 +82,6 @@ newUser.addEventListener('click', async () => {
     body: JSON.stringify(data),
   });
   newUser.disabled = false;
-  console.log(username)
   const usernameData = await username.json();
   if (username !== null) {
     userHeader.textContent = usernameData;
