@@ -70,6 +70,4 @@ Once running - you can find the resource server at
 
 #Deployed site:
 
-```bash
-https://bxpnspgki4.eu-west-1.awsapprunner.com/
-```
+[click here](https://bxpnspgki4.eu-west-1.awsapprunner.com/)
