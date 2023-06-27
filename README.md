@@ -68,4 +68,8 @@ Once running - you can find the resource server at
   http://localhost:3001
 ```
 
+#Deployed site:
 
+```bash
+https://bxpnspgki4.eu-west-1.awsapprunner.com/
+```
