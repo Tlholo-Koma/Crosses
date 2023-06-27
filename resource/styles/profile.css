@@ -6,3 +6,16 @@ h3{
   padding-bottom: 1rem;
   font-weight: lighter;
 }
+
+button {
+  text-decoration: underline overline;
+  font-weight: bold;
+  background-color: white;
+  border: none;
+  font-size: 2rem;
+  font-family: var(--main-font);
+}
+button:hover {
+  text-shadow: 0 1px 3px #000;
+  cursor: pointer;
+}
