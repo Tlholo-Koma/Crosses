@@ -1,16 +1,10 @@
 @import url("./main.css");
+:root{
+  --game-board-side: 75vw;
+  --game-max-board-side:60vh;
+}
 
 html,
-body {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: var(--main-font);
-  text-shadow: 0 1px 3px #000;
-  padding: 0;
-}
 
 header.page-header {
   justify-self: flex-start;
@@ -18,17 +12,20 @@ header.page-header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 100vw;
 }
 
 .game-main {
   display: grid;
-  gap: 1rem;
+  gap: 1vw;
   grid-template-columns: repeat(3, 1fr);
   align-self: center;
   justify-self: center;
   background-color: black;
-  max-width: 100%;
+  max-width: var(--game-max-board-side);
+  max-height: var(--game-max-board-side);
+  width: var(--game-board-side);
+  height: var(--game-board-side);
   box-sizing: border-box;
 }
 
@@ -62,8 +59,10 @@ header > h2 {
 }
 
 main button {
-  width: 10rem;
-  height: 10rem;
+  width: calc(var(--game-board-side)/3);
+  height: calc(var(--game-board-side)/3);
+  max-width: calc(var(--game-max-board-side)/3);
+  max-height: calc(var(--game-max-board-side)/3);
   background-color: white;
   border: none;
   font-family: inherit;
