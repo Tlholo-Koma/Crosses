@@ -11,7 +11,6 @@ const configurePassport = async () => {
         scope: ['user:email']
       },
       async (accessToken, refreshToken, profile, done) => {
-        console.log(profile.emails[0].value);
         const email = profile.emails[0].value
         done(null, email)
       }

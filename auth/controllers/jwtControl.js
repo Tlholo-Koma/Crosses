@@ -41,7 +41,6 @@ const verifyToken = async (token) => {
 
   try {
     const decoded = jwt.verify(token, publicKey, verifyOptions);
-    console.log("Token verified:", decoded);
     //replace later with better stuff
     if (decoded.iss === "Xand0") {
       return true;
@@ -68,9 +67,8 @@ const getEmailFromToken = async (token) => {
 
   try {
     const decoded = jwt.verify(token, publicKey, verifyOptions);
-    console.log("Token verified:", decoded);
     //replace later with better stuff
-    if (decoded.iss === "Xand0") {
+    if (decoded.iss === "Xand0" && decoded.aud == "user") {
       return decoded.email;
     }
   } catch (error) {
