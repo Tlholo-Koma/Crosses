@@ -19,6 +19,8 @@ header.page-header {
   display: grid;
   gap: 1vw;
   grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  align-content: center;
   align-self: center;
   justify-self: center;
   background-color: black;
@@ -26,7 +28,6 @@ header.page-header {
   max-height: var(--game-max-board-side);
   width: var(--game-board-side);
   height: var(--game-board-side);
-  box-sizing: border-box;
 }
 
 sup {
@@ -45,8 +46,8 @@ a {
 }
 
 h1 {
-  font-size: calc(20px+1vw);
-  padding-bottom: 2rem;
+  font-size: calc(60px + 1vw);
+  padding-bottom: 1rem;
   align-self: center;
 }
 h2 {
