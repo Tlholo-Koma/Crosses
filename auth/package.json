@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/IvanVBBD/Crosses#readme",
   "dependencies": {
-    "aws-sdk": "^2.1399.0",
+    "aws-sdk": "^2.1401.0",
     "axios": "^1.4.0",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
